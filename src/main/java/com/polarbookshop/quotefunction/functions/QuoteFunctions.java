@@ -47,11 +47,14 @@ public class QuoteFunctions {
   }
 
   @Bean
-  Consumer<Quote> logQuote() {
-    return quote -> log.info(
-      "Quote: '{}' by {}",
-      quote.content(),
-      quote.author()
+  Consumer<Mono<Quote>> logQuote() {
+    return mono -> mono.subscribe(
+      quote ->
+        log.info(
+          "Quote: '{}' by {}",
+          quote.content(),
+          quote.author()
+        )
     );
   }
 }

@@ -1,7 +1,7 @@
 plugins {
 	id 'java'
-	id 'org.springframework.boot' version '2.7.15'
-	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+	id 'org.springframework.boot' version '3.3.1'
+	id 'io.spring.dependency-management' version '1.1.5'
 	id 'org.graalvm.buildtools.native' version '0.10.2'
 }
 
@@ -17,12 +17,11 @@ java {
 description = 'Provides quotes from the books in the library.'
 
 repositories {
-	maven { url 'https://repo.spring.io/milestone' }
 	mavenCentral()
 }
 
 ext {
-	set('springCloudVersion', "2021.0.9")
+	set('springCloudVersion', "2023.0.3")
 }
 
 dependencies {
@@ -30,6 +29,7 @@ dependencies {
 	implementation 'org.springframework.cloud:spring-cloud-function-web'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'io.projectreactor:reactor-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 dependencyManagement {
